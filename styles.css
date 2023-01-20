@@ -17,7 +17,7 @@ html, body {
     flex-wrap: nowrap;
 }
 .internal-container {
-    width: 25%;
+    width: 33%;
     height: 100%;
     border: 2px solid black;
 }
