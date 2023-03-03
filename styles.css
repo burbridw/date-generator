@@ -1,5 +1,11 @@
 * {
     box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+:root {
+    --small-text: clamp(1rem, 3vmin, 1.5rem);
+    --large-text: clamp(0.5rem, 4vmin, 1.8rem);
+    --xlarge-text: clamp(2rem, 9vmin, 4rem);
 }
 html, body {
     height: 100%;
@@ -15,6 +21,7 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: center;
 }
 .internal-container {
     width: 33%;
@@ -22,13 +29,13 @@ html, body {
     border: 2px solid black;
 }
 .day-container {
-    background: linear-gradient(310deg, darkred, red);
+    background: #f45239
 }
 .month-container {
-    background: linear-gradient(310deg, navy, blue);
+    background: #75a8f6
 }
 .date-container {
-    background: linear-gradient(310deg, green, yellowgreen)
+    background: #3cd251
 }
 .year-container {
     background: linear-gradient(310deg, orangered, orange)
@@ -41,8 +48,13 @@ html, body {
     height: 25%;
     max-height: 200px;
     border-radius: 15px;
-    border: 2px solid black;
+    border: 2px solid silver;
     box-shadow: 1px 2px 5px 3px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--xlarge-text);
+    color: white;
 }
 .settings {
     margin: 20px auto;
@@ -76,10 +88,14 @@ html, body {
     margin: auto;
     width: 75%;
     text-align: center;
+    font-size: var(--large-text);
 }
 .day-img {
     margin: auto;
     width: 25%;
+}
+.day-image {
+    width: 90%;
 }
 
 .month-settings {
@@ -101,6 +117,7 @@ html, body {
 }
 .month-img {
     text-align: center;
+    font-size: var(--small-text);
 }
 
 .date-settings {
@@ -112,6 +129,7 @@ html, body {
 }
 .date-display {
     text-align: center;
+    font-size: var(--large-text);
     box-shadow: 1px 1px 1px 2px black;
     border-radius: 10px;
     background-color: lightgray;
@@ -133,6 +151,24 @@ html, body {
     justify-content: center;
     align-items: center;
     box-shadow: 1px 1px 3px 1px black;
+}
+.button-container {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.random-button {
+    background: #a9e88b;
+    width: 60vw;
+    height: 5vw;
+    border-radius: 10px;
+    border: 1px solid green;
+    box-shadow: 1px 1px 3px 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--xlarge-text);
 }
 .button:hover, .active {
     background-color: antiquewhite;

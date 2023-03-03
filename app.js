@@ -13,14 +13,19 @@ const theDay = today.getDay()
 const theMonth = today.getMonth()
 const theDate = today.getDate()
 
+const dayDisplay = document.getElementById("day-display")
+const monthDisplay = document.getElementById("month-display")
+const dateDisplay = document.getElementById("date-display")
+const randomButton = document.querySelector(".random-button")
+
 let modDate
 
 function checkDate() {
-    if ( toString(theDate).endsWith(1) ) {
+    if ( toString(theDate).endsWith(1) || theDate === 1 ) {
         modDate = theDate + "st"
-    } else if ( toString(theDate).endsWith(2) ) {
+    } else if ( toString(theDate).endsWith(2) || theDate === 2 ) {
         modDate = theDate + "nd"
-    } else if ( toString(theDate).endsWith(3) ) {
+    } else if ( toString(theDate).endsWith(3) || theDate === 3 ) {
         modDate = theDate + "rd"
     } else {
         modDate = theDate + "th"
@@ -37,22 +42,18 @@ const monthObj = {
     8: "September", 9: "October", 10: "November", 11: "December"
 }
 
-console.log("Today is: " + dayObj[theDay]+", " + monthObj[theMonth] + " " + modDate)
-
-
 function generate() {
     for ( let i = 0; i < 7; i++ ) {
         daySettings.innerHTML += `
         <div class="day-display button">
         <div class="day-text">${daysArr[i]}</div>
-        <div class="day-img">IMG</div>
         </div>
         `
     }
     for ( let i = 0; i < 12; i++ ) {
         monthSettings.innerHTML += `
         <div class="month-display button">
-        <div class="month-img">${monthsArr[i]}</div>
+        <div class="month-img">${monthObj[i]}</div>
         </div>
         `
     }
@@ -76,6 +77,7 @@ function generate() {
                             y.classList.remove("active")
                         }
                     })
+                    dayDisplay.textContent = x.textContent
                 } else if ( x.classList.contains("month-display") ) {
                     let allMonthButtons = document.querySelectorAll(".month-display")
                     allMonthButtons.forEach( (y) => {
@@ -83,13 +85,15 @@ function generate() {
                             y.classList.remove("active")
                         }
                     })
+                    monthDisplay.textContent = x.textContent
                 } else if ( x.classList.contains("date-display") ) {
                     let allDateButtons = document.querySelectorAll(".date-display")
                     allDateButtons.forEach( (y) => {
                         if ( y.classList.contains("active") ) {
                             y.classList.remove("active")
-                        }
-                    })
+                       }
+                    }) 
+                    dateDisplay.textContent = x.textContent
                 }
                 x.classList.add("active")
             }
@@ -97,4 +101,26 @@ function generate() {
     })
 }
 
+function setToday() {
+    dayDisplay.textContent = dayObj[theDay]
+    monthDisplay.textContent = monthObj[theMonth]
+    dateDisplay.textContent = modDate
+}
+
+randomButton.addEventListener("click",generateRandom)
+
+function generateRandom() {
+    let allActives = document.querySelectorAll(".active")
+    allActives.forEach( (active) =>{
+        active.classList.remove("active")
+    })
+    let randomDay = Math.floor( Math.random()*7 )
+    dayDisplay.textContent = dayObj[randomDay]
+    let randomMonth = Math.floor( Math.random()*12 )
+    monthDisplay.textContent = monthObj[randomMonth]
+    let randomDate = Math.floor( Math.random()*31 )
+    dateDisplay.textContent = datesArr[randomDate]
+}
+
 generate()
+setToday()
