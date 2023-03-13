@@ -6,6 +6,7 @@
     --small-text: clamp(1rem, 3vmin, 1.5rem);
     --large-text: clamp(0.5rem, 4vmin, 1.8rem);
     --xlarge-text: clamp(2rem, 9vmin, 4rem);
+    --xxlarge-text: clamp(2.5rem, 15vmin, 10rem);
 }
 html, body {
     height: 100%;
@@ -137,7 +138,9 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-
+.date-container .display {
+    font-size: var(--xxlarge-text);
+}
 .year-settings {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -172,5 +175,8 @@ html, body {
 }
 .button:hover, .active {
     background-color: antiquewhite;
+    box-shadow: 1px 1px 2px 2px white;
+}
+.random-button:hover {
     box-shadow: 1px 1px 2px 2px white;
 }
